@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sudoku</title>
+</head>
+<style>
+table input{
+    width: 30px;
+    text-align: center;
+    border: none;
+}
+#sudoku_str{
+    text-align: left;
+    width: 81ch;
+    font-family: monospace;
+}
+table{
+    border-collapse: collapse
+}
+table td{
+    border: 1px solid black;
+    padding: 0;
+
+}
+table tr:first-child{
+    border-top: 2px solid black;
+}
+table tr:nth-child(3n){
+    border-bottom: 3px solid black;
+}
+table tr td:first-child{
+    border-left: 2px solid black;
+}
+table tr td:nth-child(3n){
+    border-right: 2px solid black;
+}
+</style>
+<body>
+
+
+
+<table>
+    <tr>
+        <td><input maxlength="1" type="text" id="A1"></td>
+        <td><input maxlength="1" type="text" id="A2"></td>
+        <td><input maxlength="1" type="text" id="A3"></td>
+        <td><input maxlength="1" type="text" id="A4"></td>
+        <td><input maxlength="1" type="text" id="A5"></td>
+        <td><input maxlength="1" type="text" id="A6"></td>
+        <td><input maxlength="1" type="text" id="A7"></td>
+        <td><input maxlength="1" type="text" id="A8"></td>
+        <td><input maxlength="1" type="text" id="A9"></td>
+    </tr>
+    <tr>
+        <td><input maxlength="1" type="text" id="B1"></td>
+        <td><input maxlength="1" type="text" id="B2"></td>
+        <td><input maxlength="1" type="text" id="B3"></td>
+        <td><input maxlength="1" type="text" id="B4"></td>
+        <td><input maxlength="1" type="text" id="B5"></td>
+        <td><input maxlength="1" type="text" id="B6"></td>
+        <td><input maxlength="1" type="text" id="B7"></td>
+        <td><input maxlength="1" type="text" id="B8"></td>
+        <td><input maxlength="1" type="text" id="B9"></td>
+    </tr>
+    <tr>
+        <td><input maxlength="1" type="text" id="C1"></td>
+        <td><input maxlength="1" type="text" id="C2"></td>
+        <td><input maxlength="1" type="text" id="C3"></td>
+        <td><input maxlength="1" type="text" id="C4"></td>
+        <td><input maxlength="1" type="text" id="C5"></td>
+        <td><input maxlength="1" type="text" id="C6"></td>
+        <td><input maxlength="1" type="text" id="C7"></td>
+        <td><input maxlength="1" type="text" id="C8"></td>
+        <td><input maxlength="1" type="text" id="C9"></td>
+    </tr>
+    <tr>
+        <td><input maxlength="1" type="text" id="D1"></td>
+        <td><input maxlength="1" type="text" id="D2"></td>
+        <td><input maxlength="1" type="text" id="D3"></td>
+        <td><input maxlength="1" type="text" id="D4"></td>
+        <td><input maxlength="1" type="text" id="D5"></td>
+        <td><input maxlength="1" type="text" id="D6"></td>
+        <td><input maxlength="1" type="text" id="D7"></td>
+        <td><input maxlength="1" type="text" id="D8"></td>
+        <td><input maxlength="1" type="text" id="D9"></td>
+    </tr>
+    <tr>
+        <td><input maxlength="1" type="text" id="E1"></td>
+        <td><input maxlength="1" type="text" id="E2"></td>
+        <td><input maxlength="1" type="text" id="E3"></td>
+        <td><input maxlength="1" type="text" id="E4"></td>
+        <td><input maxlength="1" type="text" id="E5"></td>
+        <td><input maxlength="1" type="text" id="E6"></td>
+        <td><input maxlength="1" type="text" id="E7"></td>
+        <td><input maxlength="1" type="text" id="E8"></td>
+        <td><input maxlength="1" type="text" id="E9"></td>
+    </tr>
+    <tr>
+        <td><input maxlength="1" type="text" id="F1"></td>
+        <td><input maxlength="1" type="text" id="F2"></td>
+        <td><input maxlength="1" type="text" id="F3"></td>
+        <td><input maxlength="1" type="text" id="F4"></td>
+        <td><input maxlength="1" type="text" id="F5"></td>
+        <td><input maxlength="1" type="text" id="F6"></td>
+        <td><input maxlength="1" type="text" id="F7"></td>
+        <td><input maxlength="1" type="text" id="F8"></td>
+        <td><input maxlength="1" type="text" id="F9"></td>
+    </tr>
+    <tr>
+        <td><input maxlength="1" type="text" id="G1"></td>
+        <td><input maxlength="1" type="text" id="G2"></td>
+        <td><input maxlength="1" type="text" id="G3"></td>
+        <td><input maxlength="1" type="text" id="G4"></td>
+        <td><input maxlength="1" type="text" id="G5"></td>
+        <td><input maxlength="1" type="text" id="G6"></td>
+        <td><input maxlength="1" type="text" id="G7"></td>
+        <td><input maxlength="1" type="text" id="G8"></td>
+        <td><input maxlength="1" type="text" id="G9"></td>
+    </tr>
+    <tr>
+        <td><input maxlength="1" type="text" id="H1"></td>
+        <td><input maxlength="1" type="text" id="H2"></td>
+        <td><input maxlength="1" type="text" id="H3"></td>
+        <td><input maxlength="1" type="text" id="H4"></td>
+        <td><input maxlength="1" type="text" id="H5"></td>
+        <td><input maxlength="1" type="text" id="H6"></td>
+        <td><input maxlength="1" type="text" id="H7"></td>
+        <td><input maxlength="1" type="text" id="H8"></td>
+        <td><input maxlength="1" type="text" id="H9"></td>
+    </tr>
+    <tr>
+        <td><input maxlength="1" type="text" id="I1"></td>
+        <td><input maxlength="1" type="text" id="I2"></td>
+        <td><input maxlength="1" type="text" id="I3"></td>
+        <td><input maxlength="1" type="text" id="I4"></td>
+        <td><input maxlength="1" type="text" id="I5"></td>
+        <td><input maxlength="1" type="text" id="I6"></td>
+        <td><input maxlength="1" type="text" id="I7"></td>
+        <td><input maxlength="1" type="text" id="I8"></td>
+        <td><input maxlength="1" type="text" id="I9"></td>
+    </tr>
+</table>
+<button type="button" id="limpiar">Borrar</button>
+<button type="button" id="resolver">Resolver</button>
+
+<input type="text" id="sudoku_str">
+
+<script src="javascripts/jquery.js"></script>
+<script>
+var digits="123456789";
+var rows="ABCDEFGHI";
+var cols=digits;
+
+var casillas=[
+    "A1","A2","A3","A4","A5","A6","A7","A8","A9",
+    "B1","B2","B3","B4","B5","B6","B7","B8","B9",
+    "C1","C2","C3","C4","C5","C6","C7","C8","C9",
+    "D1","D2","D3","D4","D5","D6","D7","D8","D9",
+    "E1","E2","E3","E4","E5","E6","E7","E8","E9",
+    "F1","F2","F3","F4","F5","F6","F7","F8","F9",
+    "G1","G2","G3","G4","G5","G6","G7","G8","G9",
+    "H1","H2","H3","H4","H5","H6","H7","H8","H9",
+    "I1","I2","I3","I4","I5","I6","I7","I8","I9"
+]
+
+var TOTAL_CASILLAS=81;
+var UNIDADES_CASILLA=3;
+var HERMANOS_CASILLA=20;
+
+var unidades={}
+var hermanos={}
+var valores={}
+
+function productoCartesiano(a,b){
+    r=[]
+    for(var aa=0;aa<a.length;aa++){
+        for(var bb=0;bb<b.length;bb++){
+            r.push(a[aa]+""+b[bb]);
+        }
+    }
+    return r;
+}
+
+function init(){
+    var unidadesCompletas=[]
+    var unidadesTmp=[]
+    for(var i=0;i<cols.length;i++){
+        unidadesTmp=productoCartesiano(rows,cols[i]);
+        unidadesCompletas.push(unidadesTmp)
+    }
+    for(var i=0;i<rows.length;i++){
+        unidadesTmp=productoCartesiano(rows[i],cols);
+        unidadesCompletas.push(unidadesTmp)
+    }
+    filas=["ABC","DEF","GHI"]
+    cols=["123","456","789"]
+    for(var i=0;i<3;i++){
+        for(j=0;j<3;j++){
+            unidadesCompletas.push(productoCartesiano(filas[i],cols[j]));
+        }
+    }
+
+    for(var i=0;i<TOTAL_CASILLAS;i++){
+        unidades[casillas[i]]=[]
+        for(j=0;j<unidadesCompletas.length;j++){
+            if(unidadesCompletas[j].indexOf(casillas[i])!=-1){
+                unidades[casillas[i]].push(unidadesCompletas[j]);
+            }
+        }
+    }
+
+    for(var i=0;i<TOTAL_CASILLAS;i++){
+        hermanos[casillas[i]]=[];
+        var us=unidades[casillas[i]];
+        for(j=0;j<UNIDADES_CASILLA;j++){
+            for(k=0;k<us[j].length;k++){
+                if( hermanos[casillas[i]].indexOf(us[j][k])==-1 && us[j][k]!=casillas[i] ){
+                    hermanos[casillas[i]].push(us[j][k]);
+                }
+            }
+        }
+    }
+}
+
+function asignar(valores,casilla,digito){
+    var otros=valores[casilla].replace(digito,"");
+    var ok=true;
+    for(var i=0;i<otros.length;i++){
+        ok = ok && eliminar(valores,casilla,otros[i]);
+    }
+    return ok;
+}
+
+function eliminar(valores,casilla,digito){
+    if(valores[casilla].indexOf(digito)!=-1){
+        var d=valores[casilla].replace(digito,"");
+        valores[casilla]=d;
+        if(d.length==0){
+            return false;
+        }
+        if(d.length==1){
+            var ok=true;
+            for(var ei=0;ei<HERMANOS_CASILLA;ei++){
+                ok = ok && eliminar(valores,hermanos[casilla][ei],d);
+                if (!ok) return false;
+            }
+            return valores;
+        }
+
+        casillasUnidad=[]
+        for(var ui=0;ui<UNIDADES_CASILLA;ui++){
+            unidadTmp=unidades[casilla][ui]
+            for(var cui=0;cui<unidadTmp.length;cui++){
+                if(valores[unidadTmp[cui]].indexOf(d)!=-1){
+                    casillasUnidad.push(valores[unidadTmp[cui]]);
+                }
+            }
+        }
+        if(casillasUnidad.length==0){return false;}
+        if(casillasUnidad.length==1){
+            return asignar(valores,casillasUnidad[0],d);
+        }
+
+    }
+    return valores;
+}
+
+function buscar(valores){
+    if(valores==false){ return false;}
+    var listo=true;
+    for(var i=0;i<TOTAL_CASILLAS;i++){
+        listo = listo && valores[casillas[i]].length==1;
+    }
+    if(listo){
+        return valores;
+    }else{
+        var casilla="";
+        var n;
+        var minimo=10;
+        for(var i=0;i<TOTAL_CASILLAS;i++){
+            if(valores[casillas[i]].length>1 && valores[casillas[i]].length<minimo){
+                minimo=valores[casillas[i]].length;
+                casilla=casillas[i]
+            }
+        }
+
+        var rs=[];
+        for(var i=0;i<valores[casilla].length;i++){
+            rs.push(buscar(asignar(clone(valores),casilla,valores[casilla][i])));
+        }
+        for(var i=0;i<rs.length;i++){
+            if(rs[i]!=false){
+                return rs[i];
+            }
+        }
+        return false;
+    }
+}
+
+function clone(obj) {
+    var copy;
+
+    // Handle the 3 simple types, and null or undefined
+    if (null == obj || "object" != typeof obj) return obj;
+
+    // Handle Array
+    if (obj instanceof Array) {
+        copy = [];
+        for (var i = 0, len = obj.length; i < len; i++) {
+            copy[i] = clone(obj[i]);
+        }
+        return copy;
+    }
+
+    // Handle Object
+    if (obj instanceof Object) {
+        copy = {};
+        for (var attr in obj) {
+            if (obj.hasOwnProperty(attr)) copy[attr] = clone(obj[attr]);
+        }
+        return copy;
+    }
+
+    throw new Error("Unable to copy obj! Its type isn't supported.");
+}
+
+$(document).ready(function(){
+    init();
+
+    $("#resolver").click(function(){
+        for(var i=0;i<TOTAL_CASILLAS;i++){
+            valores[casillas[i]]=digits;
+        }
+
+        for(var i=0;i<TOTAL_CASILLAS;i++){
+            if( $("#"+casillas[i]).val()!="" ){
+                asignar(valores,casillas[i],$("#"+casillas[i]).val());
+            }
+        }
+        
+        var sol=buscar(valores);
+        for(var i=0;i<TOTAL_CASILLAS;i++){
+            $("#"+casillas[i]).val( sol[casillas[i]] );
+        }
+    });
+
+    $("#sudoku_str").change(function(){
+        var s=$(this).val();
+        if(s!=""){
+            for(var i=0;i<TOTAL_CASILLAS;i++){
+                if(s[i]!="."){
+                    $("#"+casillas[i]).val(s[i]);
+                }else{
+                    $("#"+casillas[i]).val("");
+                }
+            }
+        }
+        $(this).val("").blur();
+    });
+
+    $("#limpiar").click(function(){
+        for(var i=0;i<TOTAL_CASILLAS;i++){
+            $("#"+casillas[i]).val("");
+        }
+        $("#sudoku_str").val("");
+    });
+
+});
+</script>
+
+</body>
+</html>
